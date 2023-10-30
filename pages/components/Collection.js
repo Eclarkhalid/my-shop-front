@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 export default function Collection({ product }) {
-  return <>
+  if(product) {
+    return <>
     <section>
       <div class="max-w-screen-2xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
         <header class="text-center">
@@ -67,4 +68,6 @@ export default function Collection({ product }) {
       </div>
     </section>
   </>
+  }
+  return null;
 }
