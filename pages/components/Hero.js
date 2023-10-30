@@ -7,10 +7,10 @@ export default function Hero({ product }) {
         <div className="relative mx-auto sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-xl text-start">
             <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-text">
-              {product.title}
+              {product.title || ''}
             </h1>
             <p className="mt-4 line-clamp-3 text-lg sm:text-xl lg:text-2xl text-gray-500">
-              {product.description}
+              {product.description || ''}
             </p>
 
             <div className="mt-10 flex flex-col">
