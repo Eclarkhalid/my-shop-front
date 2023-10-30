@@ -1,12 +1,17 @@
 import Link from "next/link";
 
+// Utility function to format price with a comma for thousands
+const formatPrice = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 export default function Products({ products }) {
   return (
     <div className="bg-white">
       <div className="mx-auto px-4 py-6">
         <h2 className="text-2xl font-bold tracking-tight text-text">Our Latest Products</h2>
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8">
           {products?.length > 0 && products.map((product) => (
             <div key={product.id} className="group relative">
               <Link href="#" className="group block overflow-hidden border border-accent rounded-xl border-opacity-10">
@@ -33,7 +38,7 @@ export default function Products({ products }) {
                     </h3>
 
                     <div className="mt-1.5 flex items-center justify-between text-text">
-                      <p className="tracking-wide text-primary">ksh. {product.price}</p>
+                      <p className="tracking-wide text-primary">ksh. {formatPrice(product.price)}</p>
 
 
                       <button type="button" class="flex items-center divide-x rounded-lg border border-primary bg-white text-center text-md font-medium text-secondary-700 shadow-sm hover:bg-gray-100">

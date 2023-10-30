@@ -17,7 +17,7 @@ export default function Hero({ product }) {
                 {product.description}
               </p>
 
-              <div className="mt-10 flex flex-col items-center justify-center">
+              <div className="mt-10 flex flex-col max-sm:items-center max-sm:justify-center">
                 {/* Decorative image grid */}
                 <div className="lg:hidden relative ">
                   <div className="grid grid-cols-1 gap-6">

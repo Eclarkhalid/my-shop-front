@@ -1,14 +1,26 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
+
+  useEffect(() => {
+    // Update the currentPath state on client side
+    setCurrentPath(window.location.pathname);
+  }, []);
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
+
+  // Helper function to check if a link is active
+  const isLinkActive = (href) => {
+    return currentPath === href;
+  };
+
   return <>
-    <header className="bg-white sticky top-0 z-40 w-full">
+    <header className="bg-white sticky top-0 z-40 w-full max-md:px-2">
       <div
         className="mx-auto flex h-16 max-w-screen-2xl items-center gap-8 border-b border-primary border-opacity-40"
       >
@@ -25,19 +37,19 @@ export default function Header() {
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-md">
               <li>
-                <Link className="text-gray-500 transition hover:text-gray-500/75" href="/">
+                <Link className={`text-gray-500 transition hover:text-gray-500/75 ${isLinkActive('/') ? 'text-primary' : ""} `} href="/">
                   Home
                 </Link>
               </li>
 
               <li>
-                <Link className="text-gray-500 transition hover:text-gray-500/75" href="/">
+                <Link className={`text-gray-500 transition hover:text-gray-500/75 ${isLinkActive('/products') ? 'text-primary' : ""} `} href="/products">
                   All Products
                 </Link>
               </li>
 
               <li>
-                <select className="text-gray-500 transition hover:text-gray-500/75" href="/">
+                <select className={`text-gray-500 transition hover:text-gray-500/75 ${isLinkActive('/categories') ? 'text-primary' : ""} `} href="/categories">
                   <option value="0">Categories</option>
                   <option value="1">Shoes</option>
                 </select>
@@ -48,12 +60,21 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <div className="sm:flex sm:gap-4 border-r border-primary pr-4">
+            <div className="sm:flex sm:gap-2 border-r border-primary pr-4">
               <Link
-                className=" text-sm font-medium text-text"
+                className=" text-sm font-medium text-text hidden lg:flex"
                 href="/"
               >
                 Account
+              </Link>
+              <Link
+                className=" text-sm font-medium text-text hidden max-md:flex lg:hidden"
+                href="/"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+
               </Link>
             </div>
             <div className="ml-4 flow-root lg:ml-4">
@@ -114,23 +135,23 @@ export default function Header() {
                 <nav aria-label="Global">
                   <ul className="flex flex-col items-start gap-6 text-md">
                     <li>
-                      <Link className="text-gray-500 transition hover:text-gray-500/75" href="/"
-                      onClick={toggleMobileNav}
+                      <Link className={`text-gray-500 transition hover:text-gray-500/75`} href="/"
+                        onClick={toggleMobileNav}
                       >
                         Home
                       </Link>
                     </li>
 
                     <li>
-                      <Link className="text-gray-500 transition hover:text-gray-500/75" href="/"
-                      onClick={toggleMobileNav}
+                      <Link className={`text-gray-500 transition hover:text-gray-500/75`} href="/"
+                        onClick={toggleMobileNav}
                       >
                         All Products
                       </Link>
                     </li>
 
                     <li>
-                      <select className="text-gray-500 transition hover:text-gray-500/75">
+                      <select className={`text-gray-500 transition hover:text-gray-500/75`}>
                         <option value="0">Categories</option>
                         <option value="1">Shoes</option>
                       </select>
