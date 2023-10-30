@@ -17,10 +17,10 @@ export default function Hero({ product }) {
                 {product.description}
               </p>
 
-              <div className="mt-10 flex flex-col">
+              <div className="mt-10 flex flex-col items-center justify-center">
                 {/* Decorative image grid */}
-                <div className="lg:hidden relative">
-                  <div className="grid grid-cols-2 gap-6">
+                <div className="lg:hidden relative ">
+                  <div className="grid grid-cols-1 gap-6">
                     <div className="w-72 h-80 overflow-hidden rounded-lg border border-secondary transform rotate-3 translate-x-4 hover:-rotate-6 hover:translate-x-8 transition-transform duration-300 ease-in-out">
                       <img src={product.images[0]} alt="" className="h-full w-full object-cover object-center" />
                     </div>
