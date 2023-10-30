@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return <>
-    <header className="bg-white sticky top-0 z-40 w-full max-md:px-2">
+    <header className="bg-white sticky top-0 z-40 w-full max-md:px-2 px-4">
       <div
         className="mx-auto flex h-16 max-w-screen-2xl items-center gap-8 border-b border-primary border-opacity-40"
       >
@@ -62,13 +62,13 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <div className="sm:flex sm:gap-2 border-r border-primary pr-4">
               <Link
-                className=" text-sm font-medium text-text hidden lg:flex"
+                className=" text-sm font-medium text-text hidden md:flex"
                 href="/"
               >
                 Account
               </Link>
               <Link
-                className=" text-sm font-medium text-text hidden max-md:flex lg:hidden"
+                className=" text-sm font-medium text-text hidden max-md:flex md:hidden"
                 href="/"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
