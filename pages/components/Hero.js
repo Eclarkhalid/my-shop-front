@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function Hero({ product }) {
+  const {addProduct} = useContext(CartContext);
+  function addItemToCart() {
+    addProduct(product._id);
+  }
   if (product) {
     return (
       <div className="relative overflow-hidden bg-background my-10">
@@ -30,10 +36,10 @@ export default function Hero({ product }) {
                   </div>
                 </div>
                 <div className="flex gap-4 items-center max-sm:justify-center max-sm:mt-6">
-                  <Link href="#" className="mt-6 inline-block rounded-md border border-transparent bg-primary px-6 py-3 text-center font-medium text-white hover:primary">
+                  <Link href="#" className="mt-6 inline-block rounded-md border border-transparent bg-primary px-6 py-3 text-center font-medium text-white hover:text-accent" onClick={addItemToCart}>
                     Add to cart
                   </Link>
-                  <Link href="#" className="mt-6 inline-block rounded-md  bg-transparent border border-accent px-6 py-3 text-center font-medium text-accent hover:text-primary">
+                  <Link href="#" className="mt-6 inline-block rounded-md  bg-transparent border border-accent px-6 py-3 text-center font-medium text-accent hover:text-primary hover:border-primary">
                     View Product
                   </Link>
                 </div>

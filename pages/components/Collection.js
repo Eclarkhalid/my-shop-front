@@ -1,4 +1,8 @@
 import Link from "next/link";
+// Utility function to format price with a comma for thousands
+const formatPrice = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
 export default function Collection({ product }) {
   if(product) {
@@ -27,7 +31,7 @@ export default function Collection({ product }) {
                     <p className="mt-4 text-gray-500">
                       {product.description}
                     </p>
-                    <p className="mt-1 text-lg text-primary">ksh. {product.price}</p>
+                    <p className="mt-1 text-lg text-primary">ksh. {formatPrice(product.price)}</p>
                   </header>
 
                   <Link
